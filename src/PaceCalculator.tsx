@@ -202,10 +202,13 @@ function PaceCalculator() {
 
       <section className="about">
         <p>
-          This nifty pace calculator shows how fast you need to run on average
-          to achieve your time-goals. The table shows required lap-times to
-          finish in the desired total time.{' '}
-          <em>It does not show estimated equivalent race performances.</em>
+          The <strong>Snittfart</strong> pace calculator shows how fast you need
+          to run on average to finish your runs at a given time.
+        </p>
+        <p>
+          <mark>Timing data</mark> shows average lap-times needed for a range of
+          lap lengths &ndash; not estimated equivalent race performances. Nice
+          for planning your efforts!
         </p>
 
         <p>

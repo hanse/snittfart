@@ -147,4 +147,13 @@ section {
 section.blurred {
   opacity: 0.5;
   filter: blur(6px);
+  pointer-events: none;
+}
+
+mark {
+  background: #ddd;
+  border-radius: 4px;
+  padding: 0 4px;
+  font-size: 0.9em;
+  font-weight: 500;
 }

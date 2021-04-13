@@ -34,7 +34,7 @@ function PaceCalculatorTimingData({
         data={[
           ['Distance', `${withCommas(meters)} m`],
           ['Time', toHHMMSS(seconds, 'normal', 2)],
-          ['Required pace', getPace(meters, seconds)],
+          ['Pace', getPace(meters, seconds)],
         ]}
       />
       <table>

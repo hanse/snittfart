@@ -14,9 +14,8 @@ function App() {
           </main>
 
           <footer>
-            Feedback and requests can be sent to{' '}
-            <a href="mailto:post@snittfart.no">post@snittfart.no</a> or to{' '}
-            <a href="https://twitter.com/hanse">@hanse</a> on Twitter
+            Email <a href="mailto:post@snittfart.no">post@snittfart.no</a> for
+            support and other requests.
           </footer>
         </div>
       </div>
