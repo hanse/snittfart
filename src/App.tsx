@@ -15,7 +15,16 @@ function App() {
 
           <footer>
             Email <a href="mailto:post@snittfart.no">post@snittfart.no</a> for
-            support and other requests.
+            support and other requests &middot;{' '}
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location = window.location;
+              }}
+            >
+              Reload
+            </a>
           </footer>
         </div>
       </div>
