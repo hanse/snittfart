@@ -32,6 +32,7 @@ body {
   font-size: 20px;
   transition: opacity 0.2s;
   opacity: 0;
+  font-weight: 600;
 }
 
 .App-heading {
@@ -40,6 +41,7 @@ body {
   margin-top: 64px;
   line-height: 1.25;
   padding: 0;
+  font-weight: 600;
 }
 
 .content-container {

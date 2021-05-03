@@ -18,7 +18,7 @@ const theme = createTheme({
     formsBorderBackground: '#f1f2f3',
   },
   focusRing: {
-    color: '#e9958c',
+    color: '#e6a51a',
   },
 });
 
