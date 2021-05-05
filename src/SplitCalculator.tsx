@@ -1,63 +1,17 @@
-import { Button, Stack, useMedia } from '@devmoods/ui';
+import { Slider, Spacer, Stack } from '@devmoods/ui';
 import * as React from 'react';
 
 import { getPace, toHHMMSS, withCommas } from './formatting';
 
-type RangeInputProps = {
-  value: number;
-  min: number;
-  max: number;
-  onChange?: (event: { target: { value: string } }) => void;
-  disabled?: boolean;
-};
-
-const clamp = (value: number, min: number, max: number) =>
-  Math.min(Math.max(value, min), max);
-
-function RangeInput({ value, min, max, onChange, disabled }: RangeInputProps) {
-  const isMobile = useMedia('(max-width: 768px)');
-
-  const update = (offset: number) => () =>
-    onChange?.({
-      target: { value: clamp(value + offset, min, max).toString() },
-    });
-
-  return (
-    <>
-      {isMobile ? (
-        onChange ? (
-          <Stack horizontal justifyContent="space-between" marginTop="l">
-            <Button onClick={update(-1)} variant="outlined" style={{ flex: 1 }}>
-              -
-            </Button>
-            <Button onClick={update(1)} variant="outlined" style={{ flex: 1 }}>
-              +
-            </Button>
-          </Stack>
-        ) : null
-      ) : (
-        <input
-          type="range"
-          value={value}
-          min={min}
-          max={max}
-          onChange={onChange}
-          disabled={disabled}
-        />
-      )}
-    </>
-  );
-}
-
 interface SplitCalculatorProps {
   meters: number;
   seconds: number;
-  onChange: (e: { target: { value: string } }) => void;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: number;
 }
 
 function getColor(value: number) {
-  return value <= 0 ? '#2ecc71' : '#e74c3c';
+  return value <= 0 ? 'var(--colors-success)' : 'var(--colors-danger)';
 }
 
 function SplitCalculator({
@@ -70,15 +24,8 @@ function SplitCalculator({
   const lastSeconds = seconds - value;
   const diff = lastSeconds - firstSeconds;
 
-  const isMobile = useMedia('(max-width: 768px)');
-
   return (
-    <div
-      style={{
-        flexDirection: isMobile ? 'column' : 'row',
-        position: 'relative',
-      }}
-    >
+    <div style={{ position: 'relative' }}>
       <div
         style={{
           position: 'absolute',
@@ -97,7 +44,7 @@ function SplitCalculator({
             m, {toHHMMSS(firstSeconds, 'normal')}
           </span>
           <small>{getPace(meters / 2, value)}</small>
-          <RangeInput value={value} min={0} max={seconds} onChange={onChange} />
+          <Spacer height="s" />
         </Stack>
         <Stack spacing="xs">
           <span>
@@ -105,9 +52,10 @@ function SplitCalculator({
             m, {toHHMMSS(lastSeconds, 'normal')}
           </span>
           <small>{getPace(meters / 2, lastSeconds)}</small>
-          <RangeInput value={lastSeconds} min={0} disabled max={seconds} />
         </Stack>
       </Stack>
+      <Spacer height="m" />
+      <Slider value={value} min={0} max={seconds} onChange={onChange} />
     </div>
   );
 }

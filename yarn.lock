@@ -299,10 +299,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@devmoods/ui@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@devmoods/ui/-/ui-1.5.0.tgz#00ff00f6e73c6dac94368fdcf86d947f21307799"
-  integrity sha512-0IoQC1tUCVbLcPOIkxrHjZaVosgnUKzRILwuzuWoWz9sWH12KQHkADL7tZqgM/YDH5hQCM3aWZQ/7a/Wh7WtmA==
+"@devmoods/ui@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@devmoods/ui/-/ui-1.6.0.tgz#dc78a098a0f4e973e1b0841b3c5fdb7f12018e93"
+  integrity sha512-pYZBm8SELVG4Xu3T4rvYeT6LzUHSroe74Ohs3Kz+WeazboA9MBVTkqTzwrHTqy6R1dX+vjZ5fczrzn6CfDX7AA==
   dependencies:
     "@reach/dialog" "0.15.0"
     "@reach/menu-button" "0.15.1"

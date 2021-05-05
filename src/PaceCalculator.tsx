@@ -150,10 +150,9 @@ function PaceCalculator() {
   return (
     <Stack spacing="xl">
       <section>
-        <h2>Enter a goal</h2>
         <Stack spacing="m" className="card dmk-margin-top-s dmk-padding-m">
           <Input
-            label={'Distance 👟'}
+            label={'Enter distance 👟'}
             id="distance"
             autoCapitalize="none"
             autoFocus
@@ -165,7 +164,7 @@ function PaceCalculator() {
           />
 
           <Input
-            label={'Time ⏱'}
+            label={'Goal time ⏱'}
             id="time"
             autoCapitalize="none"
             type="text"
@@ -175,7 +174,7 @@ function PaceCalculator() {
             onChange={handleInput('TIME_CHANGED')}
           />
 
-          <h3>Or select a preset</h3>
+          <h3 style={{ textAlign: 'center' }}>Or select a preset</h3>
 
           <Select onChange={handlePresetSelect} options={presetOptions} />
         </Stack>
