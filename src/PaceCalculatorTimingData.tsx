@@ -1,11 +1,10 @@
-import * as React from 'react';
-
-import { getPace, toHHMMSS, withCommas } from './formatting';
-
-import { PerformanceApiResponse } from './types';
 import { cx } from '@devmoods/ui';
-import { fetch } from './api';
+import * as React from 'react';
 import { useAbortablePromise } from 'use-abortable-promise';
+
+import { fetch } from './api';
+import { getPace, toHHMMSS, withCommas } from './formatting';
+import { PerformanceApiResponse } from './types';
 
 const PREDEFINED_LAPS = [
   10000, 5000, 3000, 1500, 1000, 800, 400, 200, 100,

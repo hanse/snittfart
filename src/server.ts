@@ -2,7 +2,7 @@ require('dotenv-safe').config({
   allowEmptyValues: true,
 });
 
-import * as Sentry from '@sentry/node';
+import http from 'http';
 
 import {
   ApiError,
@@ -20,12 +20,12 @@ import {
   validateQuery,
   withRequestContext,
 } from '@devmoods/express-extras';
-import { toHHMMSS, withCommas } from './formatting';
-
-import type { EventPerformanceDto } from './types';
+import * as Sentry from '@sentry/node';
 import express from 'express';
 import helmet from 'helmet';
-import http from 'http';
+
+import { toHHMMSS, withCommas } from './formatting';
+import type { EventPerformanceDto } from './types';
 
 const app = express();
 const server = http.createServer(app);

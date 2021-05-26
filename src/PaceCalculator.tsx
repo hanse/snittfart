@@ -1,13 +1,19 @@
+import {
+  ErrorBoundary,
+  Input,
+  Select,
+  SelectOption,
+  Stack,
+  useThrottle,
+} from '@devmoods/ui';
 import * as React from 'react';
-
-import { Input, Select, SelectOption, Stack, useThrottle } from '@devmoods/ui';
-import { parseMeters, parseSeconds } from './parsers';
-
-import PaceCalculatorTimingData from './PaceCalculatorTimingData';
-import { RecordsDto } from './types';
-import SplitCalculator from './SplitCalculator';
-import { fetch } from './api';
 import { useAbortablePromise } from 'use-abortable-promise';
+
+import { fetch } from './api';
+import PaceCalculatorTimingData from './PaceCalculatorTimingData';
+import { parseMeters, parseSeconds } from './parsers';
+import SplitCalculator from './SplitCalculator';
+import { RecordsDto } from './types';
 
 interface State {
   time: string;
@@ -54,9 +60,13 @@ function useLocationState(query: string) {
 }
 
 function useCalculatorState() {
-  const [{ data, error }] = useAbortablePromise(async (signal) => {
-    const result = await fetch<RecordsDto[]>('/records', { signal });
-    return result.jsonData;
+  const [{ data }] = useAbortablePromise(async (signal) => {
+    try {
+      const result = await fetch<RecordsDto[]>('/records', { signal });
+      return result.jsonData;
+    } catch {
+      return [];
+    }
   }, []);
 
   const presets = data || [];
@@ -138,10 +148,6 @@ function useCalculatorState() {
       value: e.currentTarget.value,
     });
   };
-
-  if (error) {
-    throw error;
-  }
 
   return {
     onPresetSelect,
@@ -239,10 +245,12 @@ function PaceCalculator() {
       <section className={isMissingInputs ? 'blurred' : ''}>
         <h2>Timing data</h2>
         <div className="card dmk-margin-top-s">
-          <PaceCalculatorTimingData
-            meters={throttledMeters}
-            seconds={throttledSeconds}
-          />
+          <ErrorBoundary>
+            <PaceCalculatorTimingData
+              meters={throttledMeters}
+              seconds={throttledSeconds}
+            />
+          </ErrorBoundary>
         </div>
       </section>
 

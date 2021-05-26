@@ -1,6 +1,6 @@
+import { Badge, Slider, Spacer, Stack, cx } from '@devmoods/ui';
 import * as React from 'react';
 
-import { Badge, Slider, Spacer, Stack, cx } from '@devmoods/ui';
 import { getPace, toHHMMSS, withCommas } from './formatting';
 
 interface SplitCalculatorProps {

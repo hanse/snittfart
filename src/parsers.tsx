@@ -72,22 +72,21 @@ const DISTANCES: Rule[] = [
   ],
 ];
 
-const parseInput = (
-  rules: Rule[],
-  defaultEvaluator: (value: string) => number
-) => (value: string) => {
-  for (const [regex, parsedValue] of rules) {
-    const match = value.match(regex);
-    if (match) {
-      if (typeof parsedValue === 'function') {
-        return parsedValue(match);
+const parseInput =
+  (rules: Rule[], defaultEvaluator: (value: string) => number) =>
+  (value: string) => {
+    for (const [regex, parsedValue] of rules) {
+      const match = value.match(regex);
+      if (match) {
+        if (typeof parsedValue === 'function') {
+          return parsedValue(match);
+        }
+        return parsedValue;
       }
-      return parsedValue;
     }
-  }
 
-  return defaultEvaluator(value);
-};
+    return defaultEvaluator(value);
+  };
 
 export const parseSeconds = parseInput(TIMES, () => 0);
 export const parseMeters = parseInput(
